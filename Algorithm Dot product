@@ -1,0 +1,88 @@
+PROCEDURE dot_product(v1 : ARRAY_OF REAL, v2 : ARRAY_OF REAL, n : INTEGER, ps : REAL BY_REF) /*PROCÉDURE dot_product*/
+VAR
+   i : INTEGER;
+BEGIN
+   ps := 0;
+   FOR i FROM 0 TO n - 1 DO
+       ps := ps + (v1[i] * v2[i]);
+   END_FOR
+END
+/*ALGORITHME utilisant la PROCÉDURE*/
+ALGORITHM check_orthogonality_proc
+VAR
+   n, size, i, k : INTEGER;
+   v1, v2 : ARRAY_OF REAL[100];
+   ps : REAL;
+BEGIN
+   Write("Give the number of vector pairs:");
+   Read(n);
+
+   FOR k FROM 1 TO n DO
+       Write("Give the size of vectors:");
+       Read(size);
+
+       Write("Enter elements of vector v1:");
+       FOR i FROM 0 TO size - 1 DO
+           Read(v1[i]);
+       END_FOR
+
+       Write("Enter elements of vector v2:");
+       FOR i FROM 0 TO size - 1 DO
+           Read(v2[i]);
+       END_FOR
+
+       Call dot_product(v1, v2, size, ps);
+
+       IF ps = 0 THEN
+           Write("Vectors are orthogonal.");
+       ELSE
+           Write("Vectors are not orthogonal.");
+       END_IF
+   END_FOR
+END
+/* FONCTION dot_product_function*/
+FUNCTION dot_product_function(v1 : ARRAY_OF REAL, v2 : ARRAY_OF REAL, n : INTEGER) RETURNS REAL
+VAR
+   i : INTEGER;
+   ps : REAL;
+BEGIN
+   ps := 0;
+   FOR i FROM 0 TO n - 1 DO
+       ps := ps + (v1[i] * v2[i]);
+   END_FOR
+   RETURN ps;
+END
+/*ALGORITHME utilisant la FONCTION*/
+ALGORITHM check_orthogonality_func
+VAR
+   n, size, i, k : INTEGER;
+   v1, v2 : ARRAY_OF REAL[100];
+   ps : REAL;
+BEGIN
+   Write("Give the number of vector pairs:");
+   Read(n);
+
+   FOR k FROM 1 TO n DO
+       Write("Give the size of vectors:");
+       Read(size);
+
+       Write("Enter elements of vector v1:");
+       FOR i FROM 0 TO size - 1 DO
+           Read(v1[i]);
+       END_FOR
+
+       Write("Enter elements of vector v2:");
+       FOR i FROM 0 TO size - 1 DO
+           Read(v2[i]);
+       END_FOR
+
+       ps := dot_product_function(v1, v2, size);
+
+       IF ps = 0 THEN
+           Write("Vectors are orthogonal.");
+       ELSE
+           Write("Vectors are not orthogonal.");
+       END_IF
+   END_FOR
+END
+

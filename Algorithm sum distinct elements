@@ -1,4 +1,4 @@
-ALGORITHM sum_distinct_elements
+Algorithm sum_distinct_elements
 VAR
    tab1 : ARRAY_OF INTEGER[4];
    tab2 : ARRAY_OF INTEGER[5];
@@ -7,19 +7,19 @@ VAR
    found : BOOLEAN;
 
 BEGIN
-   // Read values for first array
+   /*Read values for first array*/
    FOR i FROM 0 TO 3 DO
        Read(tab1[i]);
    END_FOR
 
-   // Read values for second array
+   /*Read values for second array*/
    FOR i FROM 0 TO 4 DO
        Read(tab2[i]);
    END_FOR
 
    sum := 0;
 
-   // Check elements in tab1 that are not in tab2
+   /*Check elements in tab1 that are not in tab2*/
    FOR i FROM 0 TO 3 DO
        found := FALSE;
        FOR j FROM 0 TO 4 DO
@@ -29,11 +29,11 @@ BEGIN
            END_IF
        END_FOR
        IF (found = FALSE) THEN
-           sum := sum + tab1[i]; // Add distinct element from tab1
+           sum := sum + tab1[i]; /*Add distinct element from tab1*/
        END_IF
    END_FOR
 
-   // Check elements in tab2 that are not in tab1
+   /* Check elements in tab2 that are not in tab1*/
    FOR i FROM 0 TO 4 DO
        found := FALSE;
        FOR j FROM 0 TO 3 DO
@@ -43,7 +43,7 @@ BEGIN
            END_IF
        END_FOR
        IF (found = FALSE) THEN
-           sum := sum + tab2[i]; // Add distinct element from tab2
+           sum := sum + tab2[i]; /* Add distinct element from tab2 */
        END_IF
    END_FOR
 
